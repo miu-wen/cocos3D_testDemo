@@ -20,6 +20,8 @@ export class GameController extends Component {
 
     @property({type:Node})
     player = null;
+    @property({type:Node})
+    MainMap = null;
 
     //开始的时候监听键盘事件
     start () {

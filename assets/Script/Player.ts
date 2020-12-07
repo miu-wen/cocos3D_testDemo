@@ -16,6 +16,10 @@ export class Player extends Component {
         type:Animation,
     })
     public PlayerBody = null;
+    @property({
+        type:Node
+    })
+    public PlayerBodyNode = null;
 
     private _passFront:boolean = false;
     private _passLeft:boolean = false;
@@ -85,6 +89,9 @@ export class Player extends Component {
         }
     }
     update(deltaTime: number){
+        //同步垂直坐标
+        let pos = this.PlayerBodyNode.getWorldPosition();
+        this._pos.y = pos.y;
         //前后左右的逻辑
         if(this._passFront||this._passLeft||this._passBack||this._passRight){
             this.doMove();

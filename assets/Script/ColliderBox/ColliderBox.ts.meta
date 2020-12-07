@@ -1,0 +1,16 @@
+{
+  "ver": "4.0.1",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "e09e5260-4b2e-4899-b2bf-41145bf77b24",
+  "files": [
+    ".js",
+    ".trans"
+  ],
+  "subMetas": {},
+  "userData": {
+    "importAsPlugin": false,
+    "moduleId": "project:///assets/Script/ColliderBox/ColliderBox.js",
+    "importerSettings": 0
+  }
+}
