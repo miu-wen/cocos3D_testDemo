@@ -1,5 +1,5 @@
-import {_decorator, Component, EventKeyboard, macro, Node, systemEvent, SystemEventType} from 'cc';
-import {MOVE_STATUS, PLAYER_MOVE_EVENT} from './config/ComponentEventCode';
+import {_decorator, Component, EventKeyboard, macro, Node, systemEvent, SystemEventType,EventMouse} from 'cc';
+import {MOVE_STATUS, PLAYER_MOVE_EVENT,MOUSE_MOVE} from './config/ComponentEventCode';
 
 const { ccclass, property } = _decorator;
 
@@ -27,6 +27,7 @@ export class GameController extends Component {
     start () {
         systemEvent.on(SystemEventType.KEY_DOWN,this.onKeyDown,this);
         systemEvent.on(SystemEventType.KEY_UP,this.onKeyUp,this);
+        systemEvent.on(SystemEventType.MOUSE_MOVE,this.onMouseMove,this);
     }
     //移动方法事件触发
     emitFn(event:EventKeyboard,isMove:MOVE_STATUS){
@@ -52,11 +53,14 @@ export class GameController extends Component {
                 break;
         }
     }
+
     onKeyDown(event:EventKeyboard){
-        console.log(this.player.getPosition());
         this.emitFn(event,MOVE_STATUS.MOVE);
     }
     onKeyUp(event:EventKeyboard){
         this.emitFn(event,MOVE_STATUS.STOP);
+    }
+    onMouseMove(event:EventMouse){
+        this.player.emit(MOUSE_MOVE.MOVE_START,event);
     }
 }
